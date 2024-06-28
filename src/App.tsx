@@ -1,6 +1,7 @@
 import { useState } from "react";
 
-import Title from "./components/Title";
+import Wrapper from "./components/Wrapper";
+import Container from "./components/Container";
 import Form from "./components/Form";
 import Result from "./components/Result";
 
@@ -34,7 +35,7 @@ function App() {
         setResults({
           country: data.location.country,
           cityName: data.location.name,
-          temparature: data.current.temp_f,
+          temparature: data.current.temp_c,
           conditionText: data.current.condition.text,
           icon: data.current.condition.icon,
         })
@@ -42,11 +43,13 @@ function App() {
   };
 
   return (
-    <>
-      <Title />
-      <Form setCity={setCity} getWeather={getWeather} />
-      <Result results={results} />
-    </>
+    <Wrapper>
+      <Container>
+        <h1>React Weather App</h1>
+        <Form setCity={setCity} getWeather={getWeather} />
+        <Result results={results} />
+      </Container>
+    </Wrapper>
   );
 }
 
